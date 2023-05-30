@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+// import { Navigate } from 'react-router-dom';
+import { Suspense } from 'react';
 
 import SharedLayout from './SharedLayout/SharedLayout';
 
