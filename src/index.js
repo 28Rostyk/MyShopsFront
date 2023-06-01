@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <AuthLayout>
-        <BrowserRouter basename="/">
+        <BrowserRouter basename="/MyShopsFront ">
           <React.StrictMode>
             <App />
           </React.StrictMode>
