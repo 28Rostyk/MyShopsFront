@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import styles from './ShoppingCartPage.module.scss';
 import {
@@ -25,13 +25,16 @@ const ShoppingCart = () => {
       navigate('/shop');
     }
     setProducts(order.products);
-  }, [order]);
+  }, [order, navigate]);
 
-  const handleChange = (e, data) => {
-    dispatch(
-      setProductQuantity({ quantity: Number(e.target.value), _id: data })
-    );
-  };
+  const handleChange = useCallback(
+    (e, data) => {
+      dispatch(
+        setProductQuantity({ quantity: Number(e.target.value), _id: data })
+      );
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     if (products.length !== 0) {
@@ -69,7 +72,7 @@ const ShoppingCart = () => {
     } else {
       dispatch(setPriceAll(0));
     }
-  }, [handleChange, coupon, dispatch]);
+  }, [handleChange, coupon, dispatch, products]);
 
   // useEffect(() => {
   //   if (diskont.diskont) {
