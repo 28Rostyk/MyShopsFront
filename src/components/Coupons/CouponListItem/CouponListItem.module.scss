@@ -1,0 +1,23 @@
+.couponContainer {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  width: 200px;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.btn {
+  width: 75%;
+  height: 25px;
+  border-radius: 4px;
+}

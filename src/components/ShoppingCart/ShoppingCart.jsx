@@ -97,8 +97,7 @@ const ShoppingCart = () => {
             />
             {coupon.coupon ? (
               <p className={styles.text}>
-                Price for {product.quantity} products with diskont{' '}
-                {coupon.coupon} %:
+                Price for {product.quantity} discount {coupon.coupon} %:
                 {((product.price * product.quantity) / 100) *
                   (100 - coupon.coupon)}{' '}
                 ₴
