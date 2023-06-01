@@ -5,7 +5,7 @@ import { logout } from '../../../redux/auth/authOperation';
 import { getUser } from '../../../redux/auth/authSelector';
 
 import styles from './UserNavigation.module.scss';
-import defaultAvatar from '../../../img/avatar.png';
+import defaultAvatar from './avatar.png';
 import Button from 'shared/Button/Button';
 
 const UserNavigation = () => {
