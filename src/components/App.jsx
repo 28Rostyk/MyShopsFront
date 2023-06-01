@@ -11,7 +11,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route path="" element={<Navigate to="/shop" replace />} />
+        <Route path="/MyShopsFront" element={<Navigate to="/shop" replace />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/shopping" element={<ShoppingCartPage />} />
         <Route path="/history" element={<HistoryPage />} />
