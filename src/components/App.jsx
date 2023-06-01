@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import SharedLayout from './SharedLayout/SharedLayout';
 import ShopPage from 'pages/ShopPage';
 import ShoppingCartPage from 'pages/ShoppingCartPage';
@@ -10,6 +11,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
+        <Route path="" element={<Navigate to="/shop" replace />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/shopping" element={<ShoppingCartPage />} />
         <Route path="/history" element={<HistoryPage />} />
