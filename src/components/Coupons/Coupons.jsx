@@ -20,7 +20,7 @@ const Coupons = () => {
     if (diskontsItems.length === 0) {
       dispatch(fetchCoupons());
     }
-  }, [dispatch]);
+  }, [dispatch, diskontsItems]);
 
   const handlTakeDiskont = data => {
     dispatch(setCouponsSlice(data));
