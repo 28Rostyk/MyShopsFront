@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.avatar {
+  margin-right: 10px;
+}
+
+.name {
+  font-weight: 700;
+  margin-right: 20px;
+  color: var(--secondaryTextColor);
+  font-size: 18px;
+}
+
+@media screen and (max-width: 960px) {
+  .name {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .avatar {
+    display: none;
+  }
+}
+
+.Button {
+  color: #f50057;
+  border: 1px solid rgba(245, 0, 87, 0.5);
+}

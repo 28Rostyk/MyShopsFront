@@ -1,0 +1,25 @@
+.productLi {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  justify-content: center;
+  width: 290px;
+  height: 270px;
+  padding: 8px;
+  border: 1px solid black;
+}
+
+.imgP {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  width: 200px;
+  height: 200px;
+}
+
+.productP {
+  margin: 0;
+}

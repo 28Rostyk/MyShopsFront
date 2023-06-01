@@ -1,11 +1,22 @@
-import Header from './Header/Header';
-import UserRoutes from './UserRoutes';
-
+import { Route, Routes } from 'react-router-dom';
+import SharedLayout from './SharedLayout/SharedLayout';
+import ShopPage from 'pages/ShopPage';
+import ShoppingCartPage from 'pages/ShoppingCartPage';
+import CoupontsPage from 'pages/CouponsPage/CouponsPage';
+import HistoryPage from 'pages/HistoryPage/HistoryPage';
+import RegisterPage from 'pages/RegisterPage';
+import LoginPage from 'pages/LoginPage';
 export const App = () => {
   return (
-    <>
-      <Header />;
-      <UserRoutes />
-    </>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/shopping" element={<ShoppingCartPage />} />
+        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/coupons" element={<CoupontsPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Route>
+    </Routes>
   );
 };
