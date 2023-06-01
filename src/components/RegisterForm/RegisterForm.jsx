@@ -6,7 +6,7 @@ import useForm from '../../shared/hooks/useForm';
 import fields from './fields';
 import initialState from './initialState';
 
-import css from './register-form.module.css';
+import styles from './register-form.module.scss';
 
 const RegisterForm = ({ onSubmit }) => {
   const { state, handleChange, handleSubmit } = useForm({
@@ -16,21 +16,15 @@ const RegisterForm = ({ onSubmit }) => {
   const { email, password } = state;
 
   return (
-    <form onSubmit={handleSubmit} className={css.form}>
-      {/* <TextField
-        className={css.textField}
-        value={name}
-        handleChange={handleChange}
-        {...fields.name}
-      /> */}
+    <form onSubmit={handleSubmit} className={styles.form}>
       <TextField
-        className={css.textField}
+        className={styles.textField}
         value={email}
         handleChange={handleChange}
         {...fields.email}
       />
       <TextField
-        className={css.textField}
+        className={styles.textField}
         value={password}
         handleChange={handleChange}
         {...fields.password}

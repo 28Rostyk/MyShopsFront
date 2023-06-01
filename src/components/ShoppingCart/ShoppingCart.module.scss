@@ -1,0 +1,24 @@
+.productItem {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin-bottom: 10px;
+  width: auto;
+  height: 140px;
+  padding: 8px;
+  border: 1px solid black;
+}
+
+.img {
+  width: 120px;
+  height: auto;
+}
+
+.containerQuantity {
+  width: 200px;
+  margin-left: auto;
+}
+
+.text {
+  margin: 0;
+}
