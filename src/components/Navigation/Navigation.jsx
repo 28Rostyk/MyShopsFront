@@ -24,15 +24,13 @@ const Navigation = () => {
           </NavLink>
         )}
         {isLogin && (
-          <>
-            <NavLink className={styles.link} to="/coupons">
-              <p>Coupons</p>
-            </NavLink>
-            <NavLink className={styles.link} to="/history">
-              <p>History</p>
-            </NavLink>
-          </>
+          <NavLink className={styles.link} to="/coupons">
+            <p>Coupons</p>
+          </NavLink>
         )}
+        <NavLink className={styles.link} to="/history">
+          <p>History</p>
+        </NavLink>
       </ul>
       <div className={styles.menu_spacer}>
         {!isLogin && <NavbarAuth />}

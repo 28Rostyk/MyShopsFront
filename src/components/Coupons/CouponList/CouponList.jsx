@@ -16,14 +16,14 @@ import CouponListItem from '../CouponListItem/CouponListItem';
 
 const CouponList = () => {
   const dispatch = useDispatch();
-  const diskontsItems = useSelector(selectCoupons);
+  const couponItems = useSelector(selectCoupons);
   const setCoupon = useSelector(setCoupons);
 
   useEffect(() => {
-    if (diskontsItems.length === 0) {
+    if (couponItems.length === 0) {
       dispatch(fetchCoupons());
     }
-  }, [dispatch, diskontsItems]);
+  }, [dispatch, couponItems]);
 
   const handlTakeCoupon = data => {
     dispatch(setCouponsSlice(data));
@@ -38,7 +38,7 @@ const CouponList = () => {
       <CouponListItem
         handlTakeCoupon={handlTakeCoupon}
         handleDeactivateCoupon={handleDeactivateCoupon}
-        diskontsItems={diskontsItems}
+        couponItems={couponItems}
         setCoupon={setCoupon}
       />
     </ul>

@@ -2,13 +2,13 @@ import styles from './CouponListItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 
 const CouponListItem = ({
-  diskontsItems,
+  couponItems,
   handleDeactivateCoupon,
   handlTakeCoupon,
   setCoupon,
 }) => {
   const navigate = useNavigate();
-  return diskontsItems.map(item => {
+  return couponItems.map(item => {
     return (
       <li key={item._id}>
         <div

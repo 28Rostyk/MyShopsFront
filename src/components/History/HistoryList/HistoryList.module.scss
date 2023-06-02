@@ -1,0 +1,10 @@
+.containerOrders {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 2%;
+  height: 440px;
+  overflow-y: scroll;
+}

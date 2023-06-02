@@ -1,12 +1,20 @@
 import { useEffect, useState } from 'react';
 import styles from './History.module.scss';
 import { getAllOrders } from '../../services/API';
+import { useSelector } from 'react-redux';
+import { isUserLogin } from 'redux/auth/authSelector';
+import { getUser } from 'redux/auth/authSelector';
+import HistoryList from './HistoryList';
+import HistoryForm from './HistoryForm';
 
 const History = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [allOrders, setAllOrders] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const isLogin = useSelector(isUserLogin);
+  const user = useSelector(getUser);
 
   const onHandleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -25,7 +33,6 @@ const History = () => {
     const fetchOrders = async () => {
       try {
         setLoading(true);
-        // let search = undefined
         if (email && phone) {
           const data = await getAllOrders({
             owner: email,
@@ -45,6 +52,13 @@ const History = () => {
           });
           setAllOrders([...data.data]);
         }
+
+        if (isLogin) {
+          const data = await getAllOrders({
+            owner: user.email,
+          });
+          setAllOrders([...data.data]);
+        }
       } catch (error) {
         console.log(error.message);
       } finally {
@@ -52,77 +66,18 @@ const History = () => {
       }
     };
     fetchOrders();
-  }, [email, phone]);
-
-  const orderItems = allOrders.map(order => (
-    <li className={styles.orderLi} key={order._id}>
-      <ul className={styles.productsContainerOrder}>
-        {order.products.map(product => (
-          <li className={styles.productLi} key={product._id}>
-            <div
-              className={styles.imgP}
-              style={{
-                backgroundImage: `url(${product.imgProd})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            ></div>
-            <div className={styles.divProduct}>
-              <p>{product.nameProduct}</p>
-              <p>Price: {product.price}</p>
-              <p>
-                Price for {product.quantity} pcs becomes{' '}
-                {product.quantity * product.price}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <div className={styles.divOrder}>
-        <p>Shop: {order.shop}</p>
-        <p>Total price: {order.priceAll} $</p>
-        <p>about {order.products.length} products</p>
-      </div>
-    </li>
-  ));
+  }, [email, phone, isLogin, user]);
 
   return (
     <div className={styles.container}>
-      <div className={styles.containerShop}>
-        <ul className={styles.formUl}>
-          <li className={styles.formLi}>
-            <label className={styles.formLabel}>
-              Email:
-              <input
-                className={styles.formInput}
-                type="text"
-                name="email"
-                placeholder="User email"
-                value={email}
-                onChange={onHandleChange}
-                required
-              />
-            </label>
-          </li>
-          <li className={styles.formLi}>
-            <label className={styles.formLabel}>
-              Phone:
-              <input
-                className={styles.formInput}
-                type="text"
-                name="phone"
-                placeholder="Phone"
-                value={phone}
-                onChange={onHandleChange}
-                required
-              />
-            </label>
-          </li>
-        </ul>
-      </div>
-
-      {loading || <ul className={styles.containerOrders}>{orderItems}</ul>}
+      {!isLogin && (
+        <HistoryForm
+          onHandleChange={onHandleChange}
+          email={email}
+          phone={phone}
+        />
+      )}
+      {loading || <HistoryList allOrders={allOrders} />}
     </div>
   );
 };

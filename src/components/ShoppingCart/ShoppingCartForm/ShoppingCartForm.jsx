@@ -1,6 +1,7 @@
 import { isUserLogin } from '../../../redux/auth/authSelector';
 import { useSelector } from 'react-redux';
 import styles from './ShoppingCartForm.module.scss';
+
 const ShoppingCartForm = ({
   handleSubmit,
   onChange,
@@ -11,6 +12,7 @@ const ShoppingCartForm = ({
   navigate,
 }) => {
   const isLogin = useSelector(isUserLogin);
+
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.containerShop}>
@@ -24,7 +26,7 @@ const ShoppingCartForm = ({
                 type="text"
                 name="email"
                 placeholder="User email"
-                value={order.owner}
+                defaultValue={order.owner}
                 onChange={onChange}
                 required
               />
@@ -38,7 +40,7 @@ const ShoppingCartForm = ({
                 type="text"
                 name="customerLocation"
                 placeholder="Address"
-                value={order.customerLocation}
+                defaultValue={order.customerLocation}
                 onChange={onChange}
                 required
               />
@@ -53,7 +55,7 @@ const ShoppingCartForm = ({
                 type="text"
                 name="customerPhone"
                 placeholder="Phone"
-                value={order.customerPhone}
+                defaultValue={order.customerPhone}
                 onChange={onChange}
                 required
               />
@@ -67,7 +69,7 @@ const ShoppingCartForm = ({
                 type="text"
                 name="customerName"
                 placeholder="Name"
-                value={order.customerName}
+                defaultValue={order.customerName}
                 onChange={onChange}
                 required
               />
